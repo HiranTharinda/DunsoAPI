@@ -1,0 +1,16 @@
+meta {
+  name: auth/verify
+  type: http
+  seq: 25
+}
+
+post {
+  url: {{baseUrl}}/auth/verify
+  body: json
+  auth: inherit
+}
+
+script:post-response {
+  let data = res.getBody();
+  bru.setEnvVar("auth_token",data.token);
+}
