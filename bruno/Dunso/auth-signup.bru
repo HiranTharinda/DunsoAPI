@@ -1,0 +1,18 @@
+meta {
+  name: auth/signup
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/auth/signup
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email":"hirantharinda@gmail.com",
+    "password":"abcdef"
+  }
+}

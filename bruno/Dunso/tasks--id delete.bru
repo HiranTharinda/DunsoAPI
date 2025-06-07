@@ -1,0 +1,15 @@
+meta {
+  name: tasks/:id delete
+  type: http
+  seq: 24
+}
+
+delete {
+  url: {{baseUrl}}/tasks/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}

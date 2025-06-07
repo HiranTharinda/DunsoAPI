@@ -1,0 +1,15 @@
+meta {
+  name: habits/:id
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{baseUrl}}/habits/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}

@@ -1,0 +1,15 @@
+meta {
+  name: categories/:id delete
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{baseUrl}}/categories/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}

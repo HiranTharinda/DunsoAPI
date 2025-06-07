@@ -1,0 +1,29 @@
+{
+  "name": "dunso-todo-api",
+  "version": "1.0.0",
+  "description": "A Todo application API with user management, tasks, habits, and categories.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.21.2",
+    "google-auth-library": "^9.15.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^8.15.1",
+    "pg": "^8.7.1",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "license": "MIT",
+  "author": "Your Name"
+}

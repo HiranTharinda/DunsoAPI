@@ -1,0 +1,15 @@
+meta {
+  name: tasks/:id update
+  type: http
+  seq: 23
+}
+
+put {
+  url: {{baseUrl}}/tasks/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}

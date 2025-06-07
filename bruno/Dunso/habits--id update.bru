@@ -1,0 +1,15 @@
+meta {
+  name: habits/:id update
+  type: http
+  seq: 18
+}
+
+put {
+  url: {{baseUrl}}/habits/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}

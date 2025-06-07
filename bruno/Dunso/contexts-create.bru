@@ -1,0 +1,17 @@
+meta {
+  name: contexts/create
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/contexts/create
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name":"Personal"
+  }
+}

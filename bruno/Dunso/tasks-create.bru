@@ -1,0 +1,20 @@
+meta {
+  name: tasks/create
+  type: http
+  seq: 20
+}
+
+post {
+  url: {{baseUrl}}/tasks
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title":"Clean the bins",
+    "description":"Need to do this weekly",
+    "categoryId":"68444d66745ea56419309601",
+    "contextId":"68444e402c55f87d99fbac36"
+  }
+}

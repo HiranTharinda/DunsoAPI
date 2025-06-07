@@ -1,0 +1,15 @@
+meta {
+  name: categories/:id update
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{baseUrl}}/categories/:id
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
