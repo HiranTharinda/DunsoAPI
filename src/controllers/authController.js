@@ -14,45 +14,57 @@ const generateToken = (user) => {
 };
 
 exports.signup = async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const existingUser = await userService.getUserByEmail(email);
-  if (existingUser) return res.status(400).json({ message: 'User already exists' });
+    const existingUser = await userService.getUserByEmail(email);
+    if (existingUser) return res.status(400).json({ message: 'User already exists' });
 
-  const hashed = await bcrypt.hash(password, 10);
-  const user = await userService.createUser({ email, passwordHash: hashed });
+    const hashed = await bcrypt.hash(password, 10);
+    const user = await userService.createUser({ email, passwordHash: hashed });
 
-  const token = generateToken(user);
-  res.json({ token });
+    const token = generateToken(user);
+    res.json({ token });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const user = await userService.getUserByEmail(email);
-  if (!user || !user.passwordHash || !(await bcrypt.compare(password, user.passwordHash))) {
-    return res.status(401).json({ message: 'Invalid credentials' });
+    const user = await userService.getUserByEmail(email);
+    if (!user || !user.passwordHash || !(await bcrypt.compare(password, user.passwordHash))) {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+
+    const token = generateToken(user);
+    res.json({ token });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-
-  const token = generateToken(user);
-  res.json({ token });
 };
 
 exports.googleLogin = async (req, res) => {
-  const { idToken } = req.body;
+  try {
+    const { idToken } = req.body;
 
-  const ticket = await client.verifyIdToken({
-    idToken,
-    audience: process.env.GOOGLE_CLIENT_ID,
-  });
+    const ticket = await client.verifyIdToken({
+      idToken,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
 
-  const payload = ticket.getPayload();
-  let user = await userService.getUserByEmail(payload.email);
+    const payload = ticket.getPayload();
+    let user = await userService.getUserByEmail(payload.email);
 
-  if (!user) {
-    user = await userService.createUser({ email: payload.email });
+    if (!user) {
+      user = await userService.createUser({ email: payload.email });
+    }
+
+    const token = generateToken(user);
+    res.json({ token });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-
-  const token = generateToken(user);
-  res.json({ token });
 };
