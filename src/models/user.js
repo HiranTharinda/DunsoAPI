@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: false },
   lastName: { type: String, required: false },
+  avatar: { type: String, required: false },
+  colorMode: { type: String, enum: ['light', 'dark'], default: 'light' },
   nickName: { type: String, required: false },
   workingStyle: { type: String, required: false },
+  workWeek: { type: Array, required: false },
   workingHours: { type: String, required: false },
   householdChores: { type: Array, required: false },
   profession: { type: String, required: false },
