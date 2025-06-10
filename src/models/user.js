@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   likeNotifications: { type: Boolean, default: true },
   isNewUser: { type: Boolean, default: true },
   email: { type: String, required: true, unique: true },
-  passwordHash: { type: String, required: true },
+  passwordHash: { type: String, required: false },
   createdAt: { type: Date, default: Date.now }
 });
 
