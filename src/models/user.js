@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   avatar: { type: String, required: false },
   colorMode: { type: String, enum: ['light', 'dark'], default: 'light' },
   nickName: { type: String, required: false },
+  currentContext: { type: mongoose.Schema.Types.ObjectId, ref: 'Context', required: false },
   workingStyle: { type: String, required: false },
   workWeek: { type: Array, required: false },
   workingHours: { type: String, required: false },
